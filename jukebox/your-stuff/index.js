@@ -9,16 +9,13 @@ const getMusicData = async () => {
   const artists = await Database.findAllArtists()
 
   for (let artist of artists) {
-    const albums = await Promise.all(artist.albums.map(album => Database.findAlbum(album))) // get albums for each artist
-    artist.albums = albums
+    artist.albums = await Promise.all(artist.albums.map(album => Database.findAlbum(album)))
     for (let album of artist.albums) {
-      const songs = await Promise.all(album.songs.map(song => Database.findSong(song))) // get songs for each album
-      album.songs = songs
+      album.songs = await Promise.all(album.songs.map(song => Database.findSong(song))) 
     }
-    console.log(artist)
   }
 
-  return { artists } // wrap it in main object
+  return { artists }
 }
 
 export default getMusicData
