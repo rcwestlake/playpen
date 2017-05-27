@@ -1,5 +1,10 @@
 import Database from '../my-stuff/super-real-totally-not-fake-database'
 
+//steps
+//get all atists
+//iterate over each artist to grab the albums - update artist
+//iterate over each album to grab the songs - update the albums
+
 const getMusicData = async () => {
   const groups = await Database.findAllArtists()
 
