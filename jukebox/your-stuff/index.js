@@ -6,9 +6,9 @@ import Database from '../my-stuff/super-real-totally-not-fake-database'
 //iterate over each album to grab the songs - update the albums
 
 const getMusicData = async () => {
-  const groups = await Database.findAllArtists()
+  const artists = await Database.findAllArtists()
 
-  for (let artist of groups) {
+  for (let artist of artists) {
     const albums = await Promise.all(artist.albums.map(album => Database.findAlbum(album))) // get albums for each artist
     artist.albums = albums
     for (let album of artist.albums) {
@@ -18,7 +18,7 @@ const getMusicData = async () => {
     console.log(artist)
   }
 
-  return { groups } // wrap it in main object
+  return { artists } // wrap it in main object
 }
 
 export default getMusicData
