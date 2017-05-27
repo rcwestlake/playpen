@@ -4,11 +4,14 @@ const {
   GraphQLID,
   GraphQLString,
   GraphQLInt,
-  GraphQLBoolean
+  GraphQLBoolean,
+  GraphQLNonNull,
+  GraphQLList
 } = require('graphql')
 
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
+const { getUserById, getUsers, addUser } = require('./data')
 
 const PORT = process.env.PORT || 3000
 const server = express()
@@ -36,44 +39,56 @@ const queryType = new GraphQLObjectType({
   name: 'QueryType',
   description: 'The root query type',
   fields: {
+    users: {
+      type: new GraphQLList(userType),
+      resolve: getUsers
+    },
     user: {
       type: userType,
-      resolve: () => new Promise((resolve) => {
-        resolve({
-          id: 1,
-          username: 'ryanwestlake',
-          number_of_posts: 21,
-          active: true
-        })
-      })
+      args: {
+        id: {
+          type: new GraphQLNonNull(GraphQLID),
+          description: 'Id of the user'
+        }
+      },
+      resolve: (_, args) => {
+        return getUserById(args.id)
+      }
+    }
+  }
+})
+
+const mutationType = new GraphQLObjectType({
+  name: 'Mutation',
+  description: 'The root mutation',
+  fields: {
+    createUser: {
+      type: userType,
+      args: {
+        id: {
+          type: new GraphQLNonNull(GraphQLID)
+        },
+        username: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+        number_of_posts: {
+          type: GraphQLInt
+        },
+        active: {
+          type: new GraphQLNonNull(GraphQLBoolean)
+        }
+      },
+      resolve: (_, args) => {
+        return addUser(args)
+      }
     }
   }
 })
 
 const schema = new GraphQLSchema({
-  query: queryType
+  query: queryType,
+  mutation: mutationType
 })
-
-const appUsers = [
-  {
-    id: 10,
-    username: 'ryanwestlake',
-    number_of_posts: 11,
-    active: true
-  },
-  {
-    id: 12,
-    username: 'fredk',
-    number_of_posts: 2,
-    active: false
-  },
-  {
-    id: 11,
-    username: 'sarahjoy',
-    number_of_posts: 32,
-    active: true
-  }
-]
 
 server.use('/graphql', graphqlHTTP({
   schema,
