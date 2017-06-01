@@ -1,0 +1,8 @@
+{
+  "name": "friends",
+  "version": "1.0.0",
+  "description": "try graqhql and apollo",
+  "main": "app.js",
+  "author": "rcw",
+  "license": "MIT"
+}
