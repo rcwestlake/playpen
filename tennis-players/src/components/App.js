@@ -5,22 +5,16 @@ import {
   Link,
   Switch
 } from 'react-router-dom'
-
-const Home = () => <h1>home route</h1>
-const About = () => <h1>about route</h1>
-const Person = () => {
-  console.log('person route', this)
-  return <h1>person route</h1>
-}
-const ThirdRoute = () => <h1>third route</h1>
+import Home from './Home'
+import Players from './Players'
+import Player from './Player'
 
 const App = () => (
   <Router>
     <div>
       <Route exact path='/' component={Home} />
-      <Route path='/about' component={About} />
-      <Route path='/about/:id' component={Person} />
-      <Route path='/third' component={ThirdRoute} />
+      <Route exact path='/players' component={Players} />
+      <Route path='/players/:id' component={Player} />
     </div>
   </Router>
 )
