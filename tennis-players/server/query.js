@@ -8,7 +8,11 @@ const {
   GraphQLNonNull,
   GraphQLList
 } = require('graphql')
-const { getPlayers, getPlayerById, addPlayer } = require('../src/data/data')
+const { 
+  getPlayers,
+  getPlayerById,
+  addPlayer 
+} = require('../src/data/data')
 
 const playerType = new GraphQLObjectType({
   name: 'PlayerType',
