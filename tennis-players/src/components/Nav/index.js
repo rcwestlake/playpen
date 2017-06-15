@@ -1,70 +1,73 @@
 import React from 'react'
 import css from './nav.scss'
-console.log('css', css)
+import cn from 'classnames'
 
-// TODO: create logo and include in nav bar
-const Nav = () => {
-  return (
-    <nav class="nav">
-      <div class="nav-left">
-      <a class="nav-item">
-      <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo" />
-      </a>
-  </div>
+class Nav extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      mobile: false
+    }
+  }
 
-  <div class="nav-center">
-    <a class="nav-item">
-      <span class="icon">
-        <i class="fa fa-github"></i>
-      </span>
-    </a>
-    <a class="nav-item">
-      <span class="icon">
-        <i class="fa fa-twitter"></i>
-      </span>
-    </a>
-  </div>
+  showMobileView(prevState) {
+    this.setState((prevState) => {
+      return { mobile: !prevState.mobile }
+    })
+  }
 
-  <span class="nav-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
-
-  <div class="nav-right nav-menu">
-    <a class="nav-item">
-      Home
-    </a>
-    <a class="nav-item">
-      Documentation
-    </a>
-    <a class="nav-item">
-      Blog
-    </a>
-
-    <div class="nav-item">
-      <div class="field is-grouped">
-        <p class="control">
-          <a class="button" >
-            <span class="icon">
-              <i class="fa fa-twitter"></i>
-            </span>
-            <span>Tweet</span>
+  render() {
+    const isActive = css["is-active"]
+    
+    return (
+      <nav className={cn(css.nav)}>
+        <div className={cn(css['nav-left'])}>
+          <a className={cn(css['nav-item'])}>
+            <img src="http://bulma.io/images/bulma-logo.png" alt="logo" />
           </a>
-        </p>
-        <p class="control">
-          <a class="button is-primary">
-            <span class="icon">
-              <i class="fa fa-download"></i>
-            </span>
-            <span>Download</span>
+        </div>
+
+        <span
+          onClick={() => this.showMobileView(this.state)}
+          className={cn(css["nav-toggle"], {
+            [isActive]: this.state.mobile
+          })}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        <div className={cn(css["nav-right"], css["nav-menu"], {
+          [isActive]: this.state.mobile
+        })}>
+          <a className={cn(css["nav-item"])}>
+            Home
           </a>
-        </p>
-      </div>
-    </div>
-  </div>
-</nav>
-  )
+          <a className={cn(css["nav-item"])}>
+            Documentation
+          </a>
+          <a className={cn(css["nav-item"])}>
+            Blog
+          </a>
+
+          <div className={cn(css["nav-item"])}>
+            <div className={cn(css["field"], css["is-grouped"])}>
+              <p className={cn(css["control"])}>
+                <a className={cn(css["button"])}>
+                  <span>Tweet</span>
+                </a>
+              </p>
+              <p className={cn(css["control"])}>
+                <a className={cn(css["button"], css["is-primary"])}>
+                  <span>Download</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </nav>
+    )
+  }
 }
 
 export default Nav
