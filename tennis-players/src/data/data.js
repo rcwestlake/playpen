@@ -39,3 +39,5 @@ const addPlayer = ({id, name, number_of_wins}) => {
 exports.getPlayers = getPlayers
 exports.getPlayerById = getPlayerById
 exports.addPlayer = addPlayer
+//temporary while setting up apollo
+exports.players = players

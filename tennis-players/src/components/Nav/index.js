@@ -1,6 +1,8 @@
 import React from 'react'
-import css from './nav.scss'
+import { Link } from 'react-router-dom'
 import cn from 'classnames'
+import css from './nav.scss'
+
 
 class Nav extends React.Component {
   constructor() {
@@ -17,8 +19,6 @@ class Nav extends React.Component {
   }
 
   render() {
-    const isActive = css["is-active"]
-    
     return (
       <nav className={cn(css.nav)}>
         <div className={cn(css['nav-left'])}>
@@ -30,7 +30,7 @@ class Nav extends React.Component {
         <span
           onClick={() => this.showMobileView(this.state)}
           className={cn(css["nav-toggle"], {
-            [isActive]: this.state.mobile
+            [css["is-active"]]: this.state.mobile
           })}>
           <span></span>
           <span></span>
@@ -38,29 +38,21 @@ class Nav extends React.Component {
         </span>
 
         <div className={cn(css["nav-right"], css["nav-menu"], {
-          [isActive]: this.state.mobile
+          [css["is-active"]]: this.state.mobile
         })}>
           <a className={cn(css["nav-item"])}>
             Home
           </a>
           <a className={cn(css["nav-item"])}>
-            Documentation
-          </a>
-          <a className={cn(css["nav-item"])}>
-            Blog
+            About
           </a>
 
           <div className={cn(css["nav-item"])}>
             <div className={cn(css["field"], css["is-grouped"])}>
               <p className={cn(css["control"])}>
-                <a className={cn(css["button"])}>
-                  <span>Tweet</span>
-                </a>
-              </p>
-              <p className={cn(css["control"])}>
-                <a className={cn(css["button"], css["is-primary"])}>
-                  <span>Download</span>
-                </a>
+                <Link to='/players' className={cn(css["button"], css["is-primary"])}>
+                  <span>View All Players</span>
+                </Link>
               </p>
             </div>
           </div>

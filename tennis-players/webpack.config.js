@@ -1,10 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
+require('babel-polyfill')
 
 module.exports = webpack({
   context: path.resolve(__dirname, './src'),
   entry: {
-    app: './index.js',
+    app: ['babel-polyfill', './index.js'],
   },
   output: {
     path: path.resolve(__dirname, './dist'),
