@@ -5,10 +5,10 @@ import css from './player.scss'
 const Player = (props) => {
   console.log('props', props)
   return (
-    <div className={cn(css.column)}>
+    <div className={cn(css.column, css['is-one-quarter'])}>
       <div className={cn(css.card)}>
         <div className={cn(css['card-image'])}>
-          <figure className={cn(css.image, css["is-480x480"])}>
+          <figure className={cn(css.image, css["is-256x256"])}>
             <img src="http://bulma.io/images/placeholders/256x256.png" />
           </figure>
         </div>
