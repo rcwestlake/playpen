@@ -31,13 +31,14 @@ class Pokedex extends React.Component {
       console.log(this.props.data.error)
       return (<div>An unexpected error occurred</div>)
     }
-
+    console.log(this.props)
     return (
       <div className='w-100 bg-light-gray min-vh-100'>
         <Title className='tc pa5'>
           Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
         </Title>
         <div className='flex flex-wrap justify-center center w-75'>
+          <AddPokemonPreview trainerId={this.props.data.Trainer.id} />
           {this.props.data.Trainer.ownedPokemons.map((pokemon) =>
             <PokemonPreview key={pokemon.id} pokemon={pokemon} />
           )}
@@ -49,6 +50,7 @@ class Pokedex extends React.Component {
 
 const TrainerQuery = gql`query TrainerQuery($name: String!) {
   Trainer(name: $name) {
+    id
     name
     ownedPokemons {
       id

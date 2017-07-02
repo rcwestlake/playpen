@@ -20,7 +20,7 @@ class Pokedex extends React.Component {
 
   render () {
     const { data } = this.props
-    console.log('data', data)
+
     if(data.loading) {
       return (<div>Loading...</div>)
     }

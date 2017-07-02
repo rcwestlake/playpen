@@ -1,4 +1,4 @@
-import React from 'react'
+  import React from 'react'
 import { withRouter } from 'react-router'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -30,18 +30,32 @@ const Card = styled.div`
   padding: 20px;
 `
 
+const createPokemonMutation = gql`
+  mutation createPokemon($name: String!, $url: String!, $trainerId: ID) {
+    createPokemon(name: $name, url: $url, trainerId: $trainerId) {
+      trainer {
+        id
+        ownedPokemons {
+          id
+        }
+      }
+    }
+  }
+`
+
 class AddPokemonCard extends React.Component {
 
   static propTypes = {
     router: React.PropTypes.object.isRequired,
     params: React.PropTypes.object.isRequired,
+    mutate: React.PropTypes.func.isRequired
   }
 
   state = {
     name: '',
     url: '',
   }
-
+  
   render () {
     return (
       <div className='w-100 pa4 flex justify-center'>
@@ -80,7 +94,12 @@ class AddPokemonCard extends React.Component {
   }
 
   handleSave = () => {
-
+    const { name, url } = this.state
+    const trainerId = this.props.params.trainerId
+    this.props.mutate({ variables: { name, url, trainerId }})
+      .then(() => {
+        this.props.router.replace('/')
+      })
   }
 
   handleCancel = () => {
@@ -88,4 +107,6 @@ class AddPokemonCard extends React.Component {
   }
 }
 
-export default withRouter(AddPokemonCard)
+const AddPokemonWithMutation = graphql(createPokemonMutation)(withRouter(AddPokemonCard))
+
+export default AddPokemonWithMutation

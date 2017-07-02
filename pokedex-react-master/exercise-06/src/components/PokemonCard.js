@@ -1,7 +1,7 @@
 import React from 'react'
 import { propType } from 'graphql-anywhere'
 import gql from 'graphql-tag'
-import { graphql } from 'react-apollo'
+import { graphql, compose } from 'react-apollo'
 import styled from 'styled-components'
 
 const Button = styled.div`
@@ -24,10 +24,10 @@ const Card = styled.div`
 `
 
 class PokemonCard extends React.Component {
-
   static fragments = {
     pokemon: gql`
       fragment PokemonCardPokemon on Pokemon {
+        id
         url
         name
       }
@@ -45,6 +45,7 @@ class PokemonCard extends React.Component {
   }
 
   render () {
+    console.log('props', this.props)
     return (
       <div className='w-100 pa4 flex justify-center'>
         <Card style={{ maxWidth: 400 }}>
@@ -82,12 +83,47 @@ class PokemonCard extends React.Component {
   }
 
   handleUpdate = () => {
-
+    this.props.updatePokemon({ variables: { id: this.props.pokemon.id, name: this.state.name, url: this.state.url }})
+    .then(this.props.afterChange)
   }
 
   handleDelete = () => {
-
+    this.props.deletePokemon({ variables: { id: this.props.pokemon.id }})
+    .then(this.props.afterChange)
   }
 }
 
-export default PokemonCard
+const updatePokemon = gql`
+  mutation updatePokemon($id: ID!, $name: String!, $url: String!) {
+    updatePokemon(id: $id, name: $name, url: $url) {
+      id
+      name
+      url
+    }
+  }
+`
+
+const deletePokemon = gql`
+  mutation deletePokemon($id: ID!) {
+    deletePokemon(id: $id) {
+      trainer {
+        id
+        ownedPokemons {
+          id
+        }
+      }
+    }
+  }
+`
+
+const PokemonCardWithMutations =  compose(
+  graphql(deletePokemon, {
+    name : 'deletePokemon'
+  }),
+  graphql(updatePokemon, {
+    name: 'updatePokemon'
+  })
+)(PokemonCard)
+
+
+export default PokemonCardWithMutations

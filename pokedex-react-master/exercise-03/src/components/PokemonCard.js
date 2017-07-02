@@ -20,7 +20,6 @@ const Card = styled.div`
 `
 
 export default class PokemonCard extends React.Component {
-
   static propTypes = {
     pokemon: React.PropTypes.object.isRequired,
     handleCancel: React.PropTypes.func.isRequired,

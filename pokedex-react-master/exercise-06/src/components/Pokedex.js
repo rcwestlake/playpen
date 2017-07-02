@@ -31,7 +31,7 @@ class Pokedex extends React.Component {
       console.log(this.props.data.error)
       return (<div>An unexpected error occurred</div>)
     }
-
+    
     return (
       <div className='w-100 bg-light-gray min-vh-100'>
         <Title className='tc pa5'>
@@ -65,7 +65,8 @@ const PokedexWithData = graphql(TrainerQuery, {
       variables: {
         name: 'Ryan Westlake'
       }
-    }
+    },
+    forceFetch: true,
   }
 )(Pokedex)
 

@@ -1,28 +1,58 @@
 import React from 'react'
-import { withRouter } from 'react-router'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
 import PokemonCard from './PokemonCard'
 
 class PokemonPage extends React.Component {
-
   static propTypes = {
-    router: React.PropTypes.object.isRequired,
+    data: React.PropTypes.shape({
+      loading: React.PropTypes.bool,
+      error: React.PropTypes.object,
+      Pokemon: React.PropTypes.object
+    }),
+    route: React.PropTypes.object.isRequired,
     params: React.PropTypes.object.isRequired,
   }
 
   render () {
+    if(this.props.data.loading) {
+      return <div>loading...</div>
+    }
+
+    if(this.props.data.error) {
+      console.log('error', this.props.data.error)
+      return <div>error in the request</div>
+    }
+    console.log('props', this.props)
     return (
       <div>
-        {this.props.params.pokemonId}
+        <PokemonCard pokemon={this.props.data.Pokemon} handleCancel={this.goBack} />
       </div>
     )
   }
 
   goBack = () => {
-    this.props.router.replace('/')
+    this.props.history.replace('/')
   }
 }
 
-export default withRouter(PokemonPage)
+const PokemonQuery = gql`
+  query PokemonQuery($id: ID!) {
+    Pokemon(id: $id) {
+      id,
+      name,
+      url
+    }
+  }
+`
+
+const PokemonWithData = graphql(PokemonQuery, {
+  options: (ownProps) => ({
+    variables: {
+      id: ownProps.params.pokemonId
+    }
+  })
+})(PokemonPage)
+
+export default PokemonWithData

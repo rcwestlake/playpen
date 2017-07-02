@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import styled from 'styled-components'
 
-import PokemonPreview from '../components/PokemonPreview'
+import PokemonPreview from './PokemonPreview'
 
 const Title = styled.div`
   color: #7F7F7F;
@@ -12,7 +12,6 @@ const Title = styled.div`
 `
 
 class Pokedex extends React.Component {
-
   static propTypes = {
     data: React.PropTypes.shape({
       loading: React.PropTypes.bool,
@@ -34,19 +33,33 @@ class Pokedex extends React.Component {
     return (
       <div className='w-100 bg-light-gray min-vh-100'>
         <Title className='tc pa5'>
-          Hey {this.props.data.Trainer.name}, there are 0 Pokemons in your pokedex
+          Hey {this.props.data.Trainer.name}, there are {this.props.data.Trainer.ownedPokemons.length} Pokemons in your pokedex
         </Title>
+        {this.props.data.Trainer.ownedPokemons.map((pokemon, i) => {
+          return <PokemonPreview key={pokemon.id} pokemon={pokemon} />
+        })}
       </div>
     )
   }
 }
 
-const TrainerQuery = gql`query TrainerQuery {
-  Trainer(name: "Ryan Westlake") {
+const TrainerQuery = gql`query TrainerQuery($name: String!) {
+  Trainer(name: $name) {
     name
+    ownedPokemons {
+      name,
+      id,
+      url
+    }
   }
 }`
 
-const PokedexWithData = graphql(TrainerQuery)(Pokedex)
+const PokedexWithData = graphql(TrainerQuery, {
+  options: {
+    variables: {
+      name: "Ryan Westlake"
+    }
+  }
+})(Pokedex)
 
 export default PokedexWithData

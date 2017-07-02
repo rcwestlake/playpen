@@ -8,7 +8,6 @@ import PokemonCard from './PokemonCard'
 import PokemonCardHeader from './PokemonCardHeader'
 
 class PokemonPage extends React.Component {
-
   static propTypes = {
     data: React.PropTypes.shape({
       loading: React.PropTypes.bool,
@@ -28,7 +27,7 @@ class PokemonPage extends React.Component {
       console.log(this.props.data.error)
       return (<div>An unexpected error occurred</div>)
     }
-
+    
     const pokemon = this.props.data.Pokemon
 
     return (
@@ -47,7 +46,8 @@ class PokemonPage extends React.Component {
   }
 }
 
-const PokemonQuery = gql`query PokemonQuery($id: ID!) {
+const PokemonQuery = gql`
+  query PokemonQuery($id: ID!) {
     Pokemon(id: $id) {
       ... PokemonCardPokemon
       ... PokemonCardHeaderPokemon
