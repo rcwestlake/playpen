@@ -1,17 +1,105 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <!-- existing boards -->
-      <div class='boards'>
-        <div
-          class="simple-board"
-          ng-repeat="(boardId, board) in bctrl.boards">
-          <h4>{{board.title}}</h4>
-          <p>{{board.description}}</p>
-        </div>
-      </div>
+<!-- existing boards -->
+<div class="col-sm-4">
+  <div class='boards'>
+    <div
+      class="simple-board"
+      ng-repeat="(boardId, board) in bctrl.boards"
+      ng-click="bctrl.setEditBoard(boardId, board)">
+      <h4>{{board.title}}</h4>
+      <p>{{board.description}}</p>
+      <input
+        type="checkbox"
+        ng-model="bctrl.board.isPublic">
+        Is Public?
+      </input>
     </div>
-
-    <!-- create board -->
   </div>
 </div>
+<!-- create board -->
+<div class="col-sm-8">
+  <div ng-if='!bctrl.isEditing' class="col-xs-12 board-details">
+    <h3>Create a New Board</h3>
+    <div class="caption">
+      <form
+          name="bctrl.createForm"
+          class="create-form"
+          role="form"
+          ng-submit="bctrl.createBoard(bctrl.newBoard, bctrl.createForm.$valid)"
+          novalidate>
+        <fieldset>
+          <div>
+            <input
+                type="text"
+                class="form-control"
+                ng-model="bctrl.newBoard.title"
+                placeholder="Board Title"
+                required>
+          </div>
+          <div>
+            <input
+                type="text"
+                class="form-control"
+                ng-model="bctrl.newBoard.description"
+                placeholder="Board description"
+                required>
+          </div>
+          <div class="bottom x-small">
+            <input
+                type="checkbox"
+                ng-model="bctrl.newBoard.isPublic">
+            Board is Public?
+          </div>
+          <button
+              type="submit"
+              class="btn btn-info btn-lg">
+            Create
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- edit board -->
+<div class="col-sm-8">
+    <div ng-if='bctrl.isEditing' class="col-xs-12 board-details">
+      <div class="caption">
+        <form
+            name="bctrl.updateForm"
+            class="create-form"
+            role="form"
+            ng-submit="bctrl.updateBoard(bctrl.editBoardId, bctrl.editBoard, bctrl.updateForm.$valid)"
+            novalidate>
+          <fieldset>
+            <h3>Editing: {{bctrl.editBoard.title}}</h3>
+            <div>
+              <input
+                  type="text"
+                  class="form-control"
+                  ng-model="bctrl.editBoard.title"
+                  placeholder="Board Title"
+                  required>
+            </div>
+            <div>
+              <input
+                  type="text"
+                  class="form-control"
+                  ng-model="bctrl.editBoard.description"
+                  placeholder="Board description"
+                  required>
+            </div>
+            <div class="bottom x-small">
+              <input
+                  type="checkbox"
+                  ng-model="bctrl.editBoard.isPublic">
+              Board is Public?
+            </div>
+            <button
+                type="submit"
+                class="btn btn-info btn-lg">
+              Update
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
