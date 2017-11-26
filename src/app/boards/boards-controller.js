@@ -1,5 +1,5 @@
 angular.module('noterious')
-  .controller('BoardsCtrl', function(UserModel, BoardsModel) {
+  .controller('BoardsCtrl', function(currentUser, BoardsModel) {
     var bctrl = this
     bctrl.title = 'THE title!!!'
 
