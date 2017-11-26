@@ -3,13 +3,13 @@
   <div class='boards'>
     <div
       class="simple-board"
-      ng-repeat="(boardId, board) in bctrl.boards"
-      ng-click="bctrl.setEditBoard(boardId, board)">
+      ng-repeat="board in bctrl.boards"
+      ng-click="bctrl.setEditBoard(board.id, board)">
       <h4>{{board.title}}</h4>
       <p>{{board.description}}</p>
       <input
         type="checkbox"
-        ng-model="bctrl.board.isPublic">
+        ng-model="board.isPublic">
         Is Public?
       </input>
     </div>

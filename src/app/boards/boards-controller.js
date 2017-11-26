@@ -42,21 +42,20 @@ angular.module('noterious')
     }
 
     bctrl.updateBoard = function(boardId, board, isValid) {
-      // NOTE: this mutates data - would want a different solution
+      // NOTE: this mutates data - would want a different solution, plus switch to es6 approach to looping array
       if(isValid) {
-        var result = bctrl.boards.map(function(el, i) {
-          if(el.id === boardId) {
-            el = board
+        for(i = 0; i < bctrl.boards.length; i++) {
+          if(bctrl.boards[i].id == boardId) {
+            bctrl.boards[i] = board
           }
-          return el
-        })
-        bctrl.boards = result
+        }
         bctrl.cancelEditing()
       }
     }
 
     bctrl.cancelEditing = function() {
       bctrl.isEditing = false
+      bctrl.editBoardId = null
       bctrl.editBoard = {
         id: null,
         title: '',
