@@ -14,7 +14,7 @@ angular.module('noterious', [
         url:'/boards',
         templateUrl: 'app/boards/boards.tmpl.html',
         controller: 'BoardsCtrl',
-        controllerAs: 'boards'
+        controllerAs: 'bctrl'
       })
     ;
   })

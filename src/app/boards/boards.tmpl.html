@@ -1,19 +1,17 @@
-<div class="col-sm-4">
-  {{bctrl.title}}
-  <div class="boards">
-    <div
-      class="simple-board"
-      ng-repeat="(boardId, board) in bctrl.boards"
-      ng-click="ctrl.setEditedBoard(boardId, board)"
-    >
-      <button
-        type="button"
-        class="close"
-        ng-click="ctrl.deleteBoard(boardId)">
-        &times;
-      </button>
-      <h3>{{board.title}}</h3>
-      <p>{{board.description}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <!-- existing boards -->
+      <div class='boards'>
+        <div
+          class="simple-board"
+          ng-repeat="(boardId, board) in bctrl.boards">
+          <h4>{{board.title}}</h4>
+          <p>{{board.description}}</p>
+        </div>
+      </div>
     </div>
+
+    <!-- create board -->
   </div>
 </div>

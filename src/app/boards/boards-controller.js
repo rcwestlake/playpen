@@ -1,23 +1,23 @@
 angular.module('noterious')
-  .controller('BoardsCtrl', function(currentUser, BoardsModel) {
+  .controller('BoardsCtrl', function(BoardsModel) {
     var bctrl = this
-    bctrl.title = 'THE title!!!'
+
+    var newBoard = {
+      title: '',
+      description: '',
+      isPublic: false
+    }
 
     bctrl.boards = [
       {
         id: 1,
-        title: 'Idea 1',
-        description: 'blahhh'
+        title: 'test',
+        description: 'do things'
       },
       {
-        id: 2,
-        title: 'Board 2',
-        description: 'the deets'
-      },
-      {
-        id: 3,
-        title: 'Board 3',
-        description: 'the better deets'
+        id: 2, 
+        title: 'biz ideas',
+        description: 'do bizzy things'
       }
     ]
 
