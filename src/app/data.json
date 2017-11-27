@@ -3,12 +3,40 @@
     "id": 1,
     "title": "Visitors List",
     "description": "List of signed up visitors",
-    "isPublic": true
+    "isPublic": true,
+    "notes": [
+      {
+        "id": 34,
+        "title": "Wesley Williamson",
+        "content": "Plans to drop by to say hi.",
+        "date": "11/30/17"
+      },
+      {
+        "id": 22,
+        "title": "Jenn Piller",
+        "content": "Bringing supplies from home",
+        "date": "12/1/17"
+      }
+    ]
   },
   {
     "id": 2,
     "title": "Family Needs",
     "description": "Needs while I am in the hospital",
-    "isPublic": false
+    "isPublic": false,
+    "notes": [
+      {
+        "id": 34,
+        "title": "Bob Johnson",
+        "content": "Bringing cards from church.",
+        "date": "12/3/17"
+      },
+      {
+        "id": 22,
+        "title": "Matt Thompson",
+        "content": "Dropping by",
+        "date": "12/10/17"
+      }
+    ]
   }
 ]

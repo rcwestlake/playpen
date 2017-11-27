@@ -17,6 +17,12 @@ angular.module('noterious', [
         controller: 'BoardsCtrl',
         controllerAs: 'bctrl'
       })
+      .state('notes', {
+        url:'/notes/:id',
+        templateUrl: 'app/notes/notes.tmpl.html',
+        controller: 'NotesCtrl',
+        controllerAs: 'nctrl'
+      })
     ;
   })
 ;
