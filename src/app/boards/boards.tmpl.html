@@ -9,9 +9,15 @@
       <p>{{board.description}}</p>
       <input
         type="checkbox"
+        class="bottom x-small"
         ng-model="board.isPublic">
         Is Public?
       </input>
+      <button
+        class="btn btn-info btn-sm"
+        ui-sref="notes({id: board.id})">
+        Notes
+      </button>
     </div>
   </div>
 </div>
@@ -28,19 +34,21 @@
           novalidate>
         <fieldset>
           <div>
+            <h4>Title</h4>
             <input
                 type="text"
                 class="form-control"
                 ng-model="bctrl.newBoard.title"
-                placeholder="Board Title"
+                placeholder="Enter title"
                 required>
           </div>
           <div>
+            <h4>Description</h4>
             <input
                 type="text"
                 class="form-control"
                 ng-model="bctrl.newBoard.description"
-                placeholder="Board description"
+                placeholder="Enter description"
                 required>
           </div>
           <div class="bottom x-small">

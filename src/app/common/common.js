@@ -1,4 +1,4 @@
-angular.module('noterious.common', [
+angular.module('noterious.common', [], function() {
 
-])
+})
 ;
