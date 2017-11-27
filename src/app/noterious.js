@@ -5,7 +5,8 @@ angular.module('noterious', [
   'ngAnimate',
   'noterious.common'
 ])
-  .constant('ENDPOINT_URI', 'data.json')
+  .constant('ENDPOINT_URI', 'http://localhost:5000/')
+  .constant('DATA_PATH', 'app/data.json')
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/boards');
 

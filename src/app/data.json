@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Visitors List",
+    "description": "List of signed up visitors",
+    "isPublic": true
+  },
+  {
+    "id": 2,
+    "title": "Family Needs",
+    "description": "Needs while I am in the hospital",
+    "isPublic": false
+  }
+]
