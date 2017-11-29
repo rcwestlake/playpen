@@ -27,7 +27,6 @@ angular.module('noterious')
       }
       // TODO: send error message if it is not valid
       bctrl.resetBoard()
-      console.log('boards: ', bctrl.boards)
     }
 
     bctrl.setEditBoard = function(boardId, board) {

@@ -1,3 +1,91 @@
-hello!!! {{nctrl.title}}
-
-the id: {{nctrl.id}}
+<div class="col-sm-4">
+  <div class='boards'>
+    <div
+      class="simple-board"
+      ng-repeat="note in nctrl.notes"
+      ng-click="nctrl.setEditNote(note.id, note)">
+      <h4>{{note.title}}</h4><span>{{note.date}}</span>
+      <p>{{note.content}}</p>
+    </div>
+  </div>
+</div>
+<!-- create note -->
+<div class="col-sm-8">
+    <div ng-if='!nctrl.isEditing' class="col-xs-12 board-details">
+      <h3>Create a New Note</h3>
+      <div class="caption">
+        <form
+            name="nctrl.createForm"
+            class="create-form"
+            role="form"
+            ng-submit="nctrl.createNote(nctrl.newNote, nctrl.createForm.$valid)"
+            novalidate>
+          <fieldset>
+            <div>
+              <h4>Title</h4>
+              <input
+                  type="text"
+                  class="form-control"
+                  ng-model="nctrl.newNote.title"
+                  placeholder="Enter title"
+                  required>
+            </div>
+            <div>
+              <h4>Description</h4>
+              <input
+                  type="text"
+                  class="form-control"
+                  ng-model="nctrl.newNote.content"
+                  placeholder="Enter description"
+                  required>
+            </div>
+            <button
+                type="submit"
+                class="btn btn-info btn-lg">
+              Create
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+<!-- edit note -->
+<div class="col-sm-8">
+    <div ng-if='nctrl.isEditing' class="col-xs-12 board-details">
+      <div class="caption">
+        <form
+            name="nctrl.updateForm"
+            class="create-form"
+            role="form"
+            ng-submit="nctrl.updateBoard(nctrl.editNoteId, nctrl.editNote, nctrl.updateForm.$valid)"
+            novalidate>
+          <fieldset>
+            <h3>Editing: {{nctrl.editNote.title}}</h3>
+            <h4>Title</h4>
+            <div>
+              <input
+                  type="text"
+                  class="form-control"
+                  ng-model="nctrl.editNote.title"
+                  placeholder="Note title"
+                  required>
+            </div>
+            <h4>Content</h4>
+            <div>
+              <input
+                  type="text"
+                  class="form-control"
+                  ng-model="nctrl.editNote.content"
+                  placeholder="Note content"
+                  required>
+            </div>
+            <button
+                type="submit"
+                class="btn btn-info btn-lg">
+              Update
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
