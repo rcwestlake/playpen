@@ -17,7 +17,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import colorsSupported      from 'supports-color';
 import historyApiFallback   from 'connect-history-api-fallback';
 
-let root = 'client';
+let root = 'src';
 
 // helper method for resolving paths
 let resolveToApp = (glob = '') => {
@@ -77,7 +77,7 @@ gulp.task('serve', () => {
   var compiler = webpack(config);
 
   serve({
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 5000,
     open: false,
     server: {baseDir: root},
     middleware: [
