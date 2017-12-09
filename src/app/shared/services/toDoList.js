@@ -18,8 +18,10 @@ class ToDoList {
     if(!task) return
     if(!task.title) return 'Title is required'
     task.id = cuid()
-    return this.$http.post(this.API, task)
+
+    this.$http.post(this.API, task)
     .then(data => this.allTodos = [...this.allTodos, data.data])
+    .then(() => console.log('todos', this.allTodos))
   }
 
   getState() {

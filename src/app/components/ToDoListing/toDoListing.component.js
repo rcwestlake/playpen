@@ -4,7 +4,6 @@ export class ToDoListing {
   constructor(toDoList) {
     "ngInject"
     this.toDoList = toDoList
-    this.todos = []
   }
 
   getTodos() {
@@ -18,6 +17,9 @@ export class ToDoListing {
 }
 
 export default {
+  bindings: {
+    todos: '=todos'
+  },
   template,
   controller: ToDoListing,
   controllerAs: 'vm'
