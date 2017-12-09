@@ -1,3 +1,5 @@
+import template from './toDoItem.html'
+
 export class ToDoItemController {
   constructor(toDoList) {
     "ngInject"
@@ -9,11 +11,7 @@ export default {
   bindings: {
     task: '=todo'
   },
-  template: `
-    <div>
-      <p>{{vm.task.title}}</p>
-    </div>
-  `,
+  template,
   controller: ToDoItemController,
   controllerAs: 'vm'
 }

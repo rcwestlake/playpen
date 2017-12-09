@@ -1,3 +1,5 @@
+import template from './toDoListing.html'
+
 export class ToDoListing {
   constructor(toDoList) {
     "ngInject"
@@ -6,7 +8,6 @@ export class ToDoListing {
   }
 
   getTodos() {
-    console.log('in get todos')
     this.toDoList.getAll()
     .then(data => this.todos = data)
   }
@@ -17,13 +18,7 @@ export class ToDoListing {
 }
 
 export default {
-  template: `
-    <div class="todo-listing">
-      <ul>
-        <to-do-item todo="todo" ng-repeat="todo in vm.todos"></to-do-item>
-      </ul>
-    </div>
-  `,
+  template,
   controller: ToDoListing,
   controllerAs: 'vm'
 }

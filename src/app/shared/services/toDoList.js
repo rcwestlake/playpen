@@ -1,15 +1,13 @@
-import { API } from '../constants'
-
 class ToDoList {
-  constructor($http) {
+  constructor($http, API) {
     "ngInject"
     this.allTodos = []
     this.$http = $http
+    this.API = API
   }
 
   getAll() {
-    console.log('in getAll')
-    return this.$http.get('http://localhost:3000/tasks')
+    return this.$http.get(this.API)
     .then(data => this.allTodos = data.data)
     .then(this.getState())
   }
