@@ -1,6 +1,6 @@
 export class ToDoItemController {
   constructor(toDoList) {
-    "ngInject";
+    "ngInject"
     this.toDoList = toDoList
   }
 }

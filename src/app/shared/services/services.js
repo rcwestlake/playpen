@@ -6,4 +6,4 @@ export default angular
   .module('app.services', [])
   .service({
     toDoList
-  })
+  }, [])

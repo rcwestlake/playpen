@@ -1,3 +1,1 @@
-export const API = () => {
-  return 'http://localhost:3000/tasks'
-}
+export const API = 'http://localhost:3000/tasks'
