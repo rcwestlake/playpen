@@ -2,8 +2,11 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import Components from './components/components';
 import Services from './shared/services/services'
-import AppComponent from './app.component';
+import AppComponent from './app.component'
+import 'jquery'
 import 'normalize.css';
+import 'bootstrap'
+
 
 angular.module('app', [
     uiRouter,

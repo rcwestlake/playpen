@@ -1,4 +1,5 @@
 import './app.scss';
+import template from './app.html'
 
 export class ToDoAppController {
   constructor(toDoList) {
@@ -8,15 +9,7 @@ export class ToDoAppController {
 }
 
 export default {
-  template: `
-    <div class="app">
-      <div ui-view>
-        <div class="todos-list">
-          <to-do-listing></to-do-listing>
-        </div>
-      </div>
-    </div>
-    `,
-    controller: ToDoAppController,
-    controllerAs: 'appCtrl'
+  template,
+  controller: ToDoAppController,
+  controllerAs: 'appCtrl'
 }
