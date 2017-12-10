@@ -18,6 +18,14 @@ class ToDoFilter {
   onActive() {
     this.toDoList.showActive()
   }
+
+  onRemove() {
+    this.toDoList.removeCompleted()
+  }
+
+  onCountCompleted() {
+    if(this.toDoList.countCompleted() > 0) return true
+  }
 }
 
 export default {

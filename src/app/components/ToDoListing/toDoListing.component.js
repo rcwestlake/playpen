@@ -7,7 +7,7 @@ export class ToDoListing {
   }
 
   getTodos() {
-    this.toDoList.getAll()
+    this.toDoList.get()
   }
 
   $onInit() {

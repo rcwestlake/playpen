@@ -10,10 +10,10 @@ class ToDoList {
     this.API = API
   }
 
-  getAll() {
+  get() {
     return this.$http.get(this.API)
     .then(data => this.allTodos = data.data)
-    .then(() => this.getState())
+    .then(() => this.filter())
   }
 
   add(task) {
@@ -33,6 +33,21 @@ class ToDoList {
     .then(data => this.updateState('update', data.data))
   }
 
+  delete(task) {
+    return this.$http.delete(`${this.API}/${task.id}`)
+    .then(data => console.log('data after delete', data))
+  }
+
+  removeCompleted() {
+    console.log('in clear')
+    this.allTodos.filter(task => {
+      if(task.completed === true) {
+        this.delete(task)
+      }
+    })
+    this.get()
+  }
+
   showCompleted() {
     this.filterState = 'completed'
     this.filter()
@@ -48,6 +63,10 @@ class ToDoList {
     this.filter()
   }
 
+  countCompleted() {
+    return this.allTodos.filter(task => task.completed === true).length
+  }
+
   filter() {
     const showAll = this.filterState === 'all'
     const showCompleted = this.filterState === 'completed'
@@ -58,7 +77,8 @@ class ToDoList {
   updateState(type, newData) {
     switch (type) {
       case 'add':
-        return this.allTodos = [...this.allTodos, newData]    
+        this.allTodos = [...this.allTodos, newData]
+        this.filter()
       case 'update':
         this.allTodos = this.allTodos.map((todo, i) => {
           if(todo.id == newData.id) {
@@ -75,12 +95,6 @@ class ToDoList {
     }
     
   } 
-
-  getState() {
-    console.log('all', this.allTodos)
-    console.log('filtered', this.filteredTodos)
-    return this.filter()
-  }
 }
 
 export default ToDoList

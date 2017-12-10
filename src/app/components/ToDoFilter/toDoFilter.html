@@ -3,5 +3,6 @@
     <li class="filter-item" ng-click="vm.onAll()">All</li>
     <li class="filter-item" ng-click="vm.onActive()">Active</li>
     <li class="filter-item" ng-click="vm.onCompleted()">Completed</li>
+    <li class="filter-item clear-items" ng-if="vm.onCountCompleted()" ng-click="vm.onRemove()">Remove Completed</li>
   </ul>
 </section>

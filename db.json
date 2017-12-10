@@ -3,32 +3,12 @@
     {
       "id": 1,
       "title": "do a thing",
-      "completed": true
+      "completed": false
     },
     {
       "id": 2,
       "title": "do another thing",
-      "completed": true
-    },
-    {
-      "title": "blahh",
-      "completed": false,
-      "id": "cjazy7pi700003h6534q71snb"
-    },
-    {
-      "title": "yes!!!",
-      "completed": false,
-      "id": "cjazy8x0800003h65rknfie1w"
-    },
-    {
-      "title": "bbbb",
-      "completed": true,
-      "id": "cjb03u92d00003h652f59p856"
-    },
-    {
-      "title": "play baseballssss",
-      "completed": true,
-      "id": "cjb04nxbg00003h6562lo6dv3"
+      "completed": false
     }
   ]
 }
