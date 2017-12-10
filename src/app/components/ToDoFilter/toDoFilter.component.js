@@ -23,8 +23,16 @@ class ToDoFilter {
     this.toDoList.removeCompleted()
   }
 
+  getCompletedCount() {
+    return this.toDoList.countCompleted()
+  }
+
+  getActiveCount() {
+    return this.toDoList.countActive()
+  }
+
   onCountCompleted() {
-    if(this.toDoList.countCompleted() > 0) return true
+    if(this.getCompletedCount() > 0) return true
   }
 }
 

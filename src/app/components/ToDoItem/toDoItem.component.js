@@ -1,4 +1,5 @@
 import template from './toDoItem.html'
+import './toDoItem.css'
 
 export class ToDoItemController {
   constructor(toDoList) {

@@ -1,7 +1,8 @@
-<li>
-  <span>Task: </span><input ng-model="vm.task.title" ng-blur="vm.onUpdate()" />
+<li class="todo">
   <input
+    class="mark-complete"
     ng-click="vm.onUpdate()"
     type="checkbox"
     ng-model="vm.task.completed"/>
+  <input ng-model="vm.task.title" ng-blur="vm.onUpdate()" />
 </li>

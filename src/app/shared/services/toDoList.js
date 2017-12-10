@@ -67,6 +67,10 @@ class ToDoList {
     return this.allTodos.filter(task => task.completed === true).length
   }
 
+  countActive() {
+    return this.allTodos.filter(task => task.completed === false).length
+  }
+
   filter() {
     const showAll = this.filterState === 'all'
     const showCompleted = this.filterState === 'completed'

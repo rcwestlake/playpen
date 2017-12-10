@@ -1,0 +1,19 @@
+.todo {
+  list-style: none;
+  padding: 16px 16px 16px 60px;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+  position: relative;
+	font-size: 24px;
+	border-bottom: 1px solid #ededed;
+}
+
+.todo .mark-complete {
+  text-align: center;
+  width: 40px;
+  /* auto, since non-WebKit browsers doesn't support input styling */
+  height: auto;
+  padding-right: 10px;
+  border: 1px solid blue; /* Mobile Safari */
+}
