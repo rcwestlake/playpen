@@ -1,0 +1,6 @@
+.filter-item {
+  display: inline-block;
+  font-weight: 900;
+  padding-right: 15px;
+  cursor: pointer;
+}

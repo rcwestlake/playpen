@@ -8,7 +8,6 @@ export class ToDoListing {
 
   getTodos() {
     this.toDoList.getAll()
-    .then(data => this.todos = data)
   }
 
   $onInit() {

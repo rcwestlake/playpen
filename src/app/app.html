@@ -2,7 +2,8 @@
   <div ui-view>
     <to-do-input></to-do-input>
     <div class="todos-list">
-      <to-do-listing todos="appCtrl.toDoList.allTodos"></to-do-listing>
+      <to-do-listing todos="appCtrl.toDoList.filteredTodos"></to-do-listing>
     </div>
+    <to-do-footer></to-do-footer>
   </div>
 </div>

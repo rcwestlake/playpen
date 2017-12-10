@@ -3,7 +3,9 @@ import cuid from 'cuid'
 class ToDoList {
   constructor($http, API) {
     "ngInject"
+    this.filteredTodos = []
     this.allTodos = []
+    this.filterState = 'all'
     this.$http = $http
     this.API = API
   }
@@ -11,7 +13,7 @@ class ToDoList {
   getAll() {
     return this.$http.get(this.API)
     .then(data => this.allTodos = data.data)
-    .then(this.getState())
+    .then(() => this.getState())
   }
 
   add(task) {
@@ -31,6 +33,28 @@ class ToDoList {
     .then(data => this.updateState('update', data.data))
   }
 
+  showCompleted() {
+    this.filterState = 'completed'
+    this.filter()
+  }
+
+  showActive() {
+    this.filterState = 'active'
+    this.filter()
+  }
+
+  showAll() {
+    this.filterState = 'all'
+    this.filter()
+  }
+
+  filter() {
+    const showAll = this.filterState === 'all'
+    const showCompleted = this.filterState === 'completed'
+    
+    return this.filteredTodos = this.allTodos.filter(task => (showAll || showCompleted === task.completed))
+  }
+
   updateState(type, newData) {
     switch (type) {
       case 'add':
@@ -45,7 +69,6 @@ class ToDoList {
           }
           return todo
         })
-        console.log(this.allTodos)
         return this.allTodos
       default:
         return this.allTodos
@@ -54,7 +77,9 @@ class ToDoList {
   } 
 
   getState() {
-    return this.allTodos
+    console.log('all', this.allTodos)
+    console.log('filtered', this.filteredTodos)
+    return this.filter()
   }
 }
 

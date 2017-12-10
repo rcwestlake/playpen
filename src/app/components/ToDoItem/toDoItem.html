@@ -1,5 +1,5 @@
 <li>
-  <span>Task: </span><input ng-model="vm.task.title" />
+  <span>Task: </span><input ng-model="vm.task.title" ng-blur="vm.onUpdate()" />
   <input
     ng-click="vm.onUpdate()"
     type="checkbox"
