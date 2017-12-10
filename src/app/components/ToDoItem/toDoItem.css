@@ -11,9 +11,29 @@
 
 .todo .mark-complete {
   text-align: center;
-  width: 40px;
-  /* auto, since non-WebKit browsers doesn't support input styling */
+  width: 30px;
   height: auto;
-  padding-right: 10px;
-  border: 1px solid blue; /* Mobile Safari */
+  padding-right: 2px;
+}
+
+.todo .mark-complete:checked {
+  background-color: #e9ecee;
+	border: 1px solid #adb8c0;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+	color: #99a1a7;
+}
+
+.todo .todo-input {
+  border: none;
+}
+
+.todo .todo-input:focus {
+  outline: none;
+  border-bottom: 1px solid red;
+}
+
+.remove {
+  cursor: pointer;
+  color: red;
+  font-size: 15px;
 }

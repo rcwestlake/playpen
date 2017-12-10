@@ -35,7 +35,6 @@ class ToDoList {
 
   delete(task) {
     return this.$http.delete(`${this.API}/${task.id}`)
-    .then(data => console.log('data after delete', data))
   }
 
   removeCompleted() {

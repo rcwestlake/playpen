@@ -10,6 +10,11 @@ export class ToDoItemController {
   onUpdate() {
     this.toDoList.update(this.task)
   }
+
+  onRemove() {
+    this.toDoList.delete(this.task)
+    .then(() => this.toDoList.get())
+  }
 }
 
 export default {

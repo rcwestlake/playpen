@@ -4,5 +4,9 @@
     ng-click="vm.onUpdate()"
     type="checkbox"
     ng-model="vm.task.completed"/>
-  <input ng-model="vm.task.title" ng-blur="vm.onUpdate()" />
+  <input
+    class="todo-input"
+    ng-model="vm.task.title"
+    ng-blur="vm.onUpdate()" />
+  <span class="remove" ng-click="vm.onRemove()">X</span>
 </li>

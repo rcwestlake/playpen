@@ -21,6 +21,9 @@ export class ToDoInput {
 }
 
 export default {
+  bindings: {
+    placeholder: '@'
+  },
   template,
   controller: ToDoInput,
   controllerAs: 'vm'
