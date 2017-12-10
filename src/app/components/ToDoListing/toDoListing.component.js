@@ -18,7 +18,7 @@ export class ToDoListing {
 
 export default {
   bindings: {
-    todos: '=todos'
+    todos: '<'
   },
   template,
   controller: ToDoListing,

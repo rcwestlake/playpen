@@ -3,12 +3,12 @@
     {
       "id": 1,
       "title": "do a thing",
-      "completed": false
+      "completed": true
     },
     {
       "id": 2,
       "title": "do another thing",
-      "completed": false
+      "completed": true
     },
     {
       "title": "blahh",
@@ -21,19 +21,14 @@
       "id": "cjazy8x0800003h65rknfie1w"
     },
     {
-      "title": "please!!!",
-      "completed": false,
-      "id": "cjazy9ivf00003h65d954h36z"
+      "title": "bbbb",
+      "completed": true,
+      "id": "cjb03u92d00003h652f59p856"
     },
     {
-      "title": "aaa",
+      "title": "cccc",
       "completed": false,
-      "id": "cjazzyhe200003h651u48y23u"
-    },
-    {
-      "title": "another one",
-      "completed": false,
-      "id": "cjazzysgf00013h65beoa4aqg"
+      "id": "cjb04nxbg00003h6562lo6dv3"
     }
   ]
 }

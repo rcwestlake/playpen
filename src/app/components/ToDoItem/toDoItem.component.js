@@ -5,6 +5,10 @@ export class ToDoItemController {
     "ngInject"
     this.toDoList = toDoList
   }
+
+  onUpdate() {
+    this.toDoList.update(this.task)
+  }
 }
 
 export default {

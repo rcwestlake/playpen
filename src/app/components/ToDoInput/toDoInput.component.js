@@ -10,9 +10,13 @@ export class ToDoInput {
     }
   }
 
-  addTask() {
-    console.log('here!')
+  onAdd() {
     this.toDoList.add(this.newTask)
+    .then(() => this.resetNewTask())
+  }
+
+  resetNewTask() {
+    this.newTask.title = ''
   }
 }
 

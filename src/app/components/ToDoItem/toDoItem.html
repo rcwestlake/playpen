@@ -1,4 +1,7 @@
 <li>
-  <p>{{vm.task.title}}</p>
-  <p>Completed: {{vm.task.completed}}</p>
+  <span>Task: </span><input ng-model="vm.task.title" />
+  <input
+    ng-click="vm.onUpdate()"
+    type="checkbox"
+    ng-model="vm.task.completed"/>
 </li>
