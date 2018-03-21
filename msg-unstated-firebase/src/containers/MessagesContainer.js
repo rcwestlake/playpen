@@ -14,11 +14,12 @@ class MessagesContainer extends Container {
   }
 
   state = {
-    messages: []
+    messages: [{ content: 'blah'}, { content: 'yes'}]
   }
 
   createMessage(msgData, key) {
     this.setState({ messages: [...this.state.messages, { timeStamp: msgData.timeStamp, content: msgData.content, author: msgData.author, uid: key }]})
+    console.log(this.state.messages)
   }
 
   addMessage(message, authorId) {
@@ -44,7 +45,10 @@ class MessagesContainer extends Container {
   startListeningForMessages() {
     this.messageRef.onSnapshot(queryData => {
       console.log(queryData)
-      queryData.forEach(message => this.createMessage(message.data()))
+      queryData.forEach(message => {
+        console.log(message.data())
+        this.createMessage(message.data(), message.id)
+      })
     })
   }
 }

@@ -26,9 +26,7 @@ class App extends Component {
                                                           addMessage={messageState.addMessage} />}
             {authState.state.status === 'AWAITING_AUTH' && <Loading />}
             <Messages
-              user={authState.state}
-              messages={messageState.state.messages}
-              deleteMessage={messageState.deleteMessage} />
+              user={authState.state} />
           </section>
         )}
       </Subscribe>
