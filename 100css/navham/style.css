@@ -1,0 +1,38 @@
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  background: green;
+}
+
+#menu {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.line-1,
+.line-2,
+.line-3 {
+  height: 15px;
+  width: 140px;
+  background: white;
+  margin-bottom: 15px;
+}
+
+.line-1 {
+  animation: animate-line-1-rev .7s ease-in-out;
+}
+.line-2 {
+  margin: $menu-icon-line-space 0;
+  animation: animate-line-2-rev .7s ease-in-out;
+}
+.line-3 {
+  animation: animate-line-3-rev .7s ease-in-out;
+}

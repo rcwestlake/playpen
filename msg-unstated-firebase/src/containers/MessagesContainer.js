@@ -11,6 +11,7 @@ class MessagesContainer extends Container {
     this.addMessage = this.addMessage.bind(this)
     this.removeMessage = this.removeMessage.bind(this)
     this.deleteMessage = this.deleteMessage.bind(this)
+    this.startListeningForMessages = this.startListeningForMessages.bind(this)
   }
 
   state = {
